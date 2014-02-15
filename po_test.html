@@ -1,0 +1,251 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Purchase Order Test</title>
+
+</head>
+
+<body>
+	<textarea class="js-basket-textarea" rows="10" cols="50"></textarea>
+	<form>
+		<ul id="radio-list">
+			<li><input type="radio" name="radioButtons" id="radFCIDealerVu" class="radio-button" checked> FCI Dealer Vu</input></li>
+			<li><input type="radio" name="radioButtons" id="radLightSpeed" class="radio-button"> Light Speed</input></li>
+			<li><input type="radio" name="radioButtons" id="radQuickbooks" class="radio-button"> Quickbooks</input></li>
+			<li><input type="radio" name="radioButtons" id="radSystem2000" class="radio-button"> System 2000</input></li>
+			<li><input type="radio" name="radioButtons" id="radTotalControl" class="radio-button"> Total Control</input></li>
+			<li><input type="radio" name="radioButtons" id="radTabDelim" class="radio-button"> Tab Delimited</input></li>
+		</ul>
+	</form>
+	<input type="button" class="btn btn-primary addToCartBtn js-basket-add-btn" value="Add Items to Cart" onclick="checkTextarea()">
+
+	<h2>Results</h2>
+	<table id="results-table" border="1">
+		<thead>
+			<tr>
+				<th>Product Code</th>
+				<th>Qty</th>
+			<tr>
+		</thead>
+		<tbody>
+		
+		</tbody>
+	</table>
+
+	<h2>Full format split</h2>
+	<table id="positions-table" border="1">
+		<thead>
+			<tr>
+				<th>Full Line</th>
+				<th>Position 1</th>
+				<th>Position 2</th>
+				<th>Position 3</th>
+				<th>Position 4</th>
+				<th>Position 5</th>
+				<th>Position 6</th>
+				<th>Position 7</th>
+				<th>Position 8</th>
+				<th>Position 9</th>
+				<th>Position 10</th>
+			<tr>
+		</thead>
+		<tbody>
+		
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="https://test.northernwholesale.com/preview/store/20120606532/assets/themes/nws_en/plugins/jquery/jquery-1.7.2.min.js"></script>
+
+	<script type="text/javascript">
+
+	function checkTextarea() {
+		
+		textarea = $('textarea');
+
+
+		var value = textarea.val().trim(),
+		productLines = [],
+		error = false,
+		i = 0,
+		products = {};
+		
+		//console.log("Text area value: " + value);
+
+		if(value == ''){
+
+			textarea.focus();
+			//this.addFieldError($this.textarea, vars['empty_textarea_error']);
+			console.log("Text area is empty");
+		}
+		
+		else
+			{
+
+			//this.removeFieldError($this.textarea);
+
+			productLines = value.split(/\n/);
+
+			if(productLines.length == 0){
+
+				//this.addFieldError($this.textarea, vars['empty_textarea_error']);
+				//this.addFieldError($this.find('.js-basket-input'), vars['empty_textarea_error']);
+				console.out("Empty");
+			}
+			
+			else
+			{
+
+				//this.removeFieldError($this.textarea);
+
+				var str = '',
+				lastWord = '',
+				firstWord = '',
+				error_key = 'format_textarea_error',
+				j;
+				
+				var positionshtml = '', 
+					resultshtml = '',
+					numOfRows = 0;
+
+				for(i; i < productLines.length; i+=1)
+				{
+					
+					
+					str = productLines[i].trim();
+					str = str.replace(',', ' ').trim();
+					var tmp = str.split(/\s+/);
+					
+					/*
+					firstWord = tmp.shift();
+					lastWord = tmp.pop();
+					
+					if(lastWord) 
+						products[firstWord.trim()] = lastWord.trim();
+						*/
+						
+					positionshtml += '<tr class="child"><td>' + str + '</td>';
+					for(var x = 0;x < tmp.length;x++)
+						positionshtml += '<td>' + tmp[x] + '</td>';
+					
+					positionshtml += '</tr>';
+					
+					$('#positions-table tbody').html(positionshtml);
+					
+					//check that the line does not begin with certain key words (add more if necessary). If it does, go to next line
+					var excludeWordBank = ['Page','DealerVu','PURCHASE','PARTS'];
+					if(excludeWordBank.indexOf(tmp[0]) > -1)
+					{
+						continue;
+					}
+					else if($('#radFCIDealerVu').prop('checked'))
+					{				
+						var productCode, qty, vendor;
+						
+						//check that the line has at least 4 words/numbers
+						if(tmp.length >= 4)
+						{
+							//if no product Code is held, hold a new product Code (until a qty is found)
+							if(!productCode || productCode == '')
+							{
+								productCode = tmp[0];
+								vendor = tmp[1];
+								
+								//check if the last character contains vendor and remove from product Code
+								if(productCode.substring(productCode.length - vendor.length, productCode.length) == vendor)
+								{
+									productCode = productCode.slice(0, 0 - tmp[1].length);
+								}
+							}
+							
+							//check that there is a number in the 4th last position, for qty. If there isn't, hold the productCode for another line
+							if(!isNaN(tmp[tmp.length-4]))
+							{
+								qty = parseInt(tmp[tmp.length-4]);//set the qty
+								products[productCode] = qty;//add to products array
+								resultshtml += '<tr class="child"><td>' + productCode + '</td><td>' + qty + '</td></tr>';
+								productCode = null;//release product code as the next line will include one
+							}
+						}
+					}					
+					else if($('#radLightSpeed').prop('checked'))
+					{
+						if(tmp.length >= 3)
+						{
+							if(tmp[tmp.length-1].indexOf("$") !== -1)
+							{
+								qty = parseInt(tmp[tmp.length-3])
+								resultshtml += '<tr class="child"><td>' + productCode + '</td><td>' + qty + '</td></tr>';
+								products[productCode] = qty;
+								productCode = null;
+							}
+							else if(tmp[tmp.length-2].indexOf("$") !== -1)
+							{
+								qty = parseInt(tmp[tmp.length-4]);
+								resultshtml += '<tr class="child"><td>' + productCode + '</td><td>' + qty + '</td></tr>';
+								products[productCode] = qty;
+								productCode = null;
+							}
+							else if(tmp[tmp.length-3].indexOf("$") !== -1)
+							{
+								qty = parseInt(tmp[tmp.length-5]);
+								resultshtml += '<tr class="child"><td>' + productCode + '</td><td>' + qty + '</td></tr>';
+								products[productCode] = qty;
+								productCode = null;
+							}
+						}
+					}				
+					else if($('#radQuickbooks').prop('checked'))
+					{
+						var qty = parseInt(tmp[tmp.length-3])
+						resultshtml += '<tr class="child"><td>' + tmp[0] + '</td><td>' + qty + '</td></tr>';
+						products[tmp[0]] = qty;
+					}			
+					else if($('#radSystem2000').prop('checked'))
+					{
+						if(i == 0)
+						{
+							var currentRow = tmp[0] - 1;
+						}
+						
+						if(tmp[0] == currentRow + 1)
+						{
+							var qty = parseInt(tmp[2])
+							resultshtml += '<tr class="child"><td>' + tmp[1] + '</td><td>' + qty + '</td></tr>';
+							products[tmp[1]] = qty;
+							currentRow+=1;
+						}
+					}					
+					else if($('#radTotalControl').prop('checked'))
+					{
+						if(tmp.length > 3)
+						{
+							var qty = parseInt(tmp[tmp.length-3]);
+							resultshtml += '<tr class="child"><td>' + tmp[0] + '</td><td>' + qty + '</td></tr>';
+							products[tmp[0]] = qty;
+						}
+					}
+					else if($('#radTabDelim').prop('checked'))
+					{
+						productCode = tmp.shift();
+						qty = tmp.pop();
+						resultshtml += '<tr class="child"><td>' + tmp[0] + '</td><td>' + qty + '</td></tr>';
+						products[firstWord.trim()] = lastWord.trim();
+					}
+					else
+					{
+						console.log("Radio button error");
+					}
+					
+					$('#results-table tbody').html(resultshtml);
+				}
+				console.log(products);
+			}
+		}
+	};
+	</script>
+									
+	</body>
+</html>
