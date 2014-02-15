@@ -18,8 +18,9 @@ That's okay please stay.</haiku>
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css"/>
-		<!--<link rel="stylesheet" type="text/css" href="files/css/styles-main.css"/>
-		<link rel="stylesheet" type="text/css" href="files/css/responsiveslides.css"/>-->
+		<link rel="stylesheet" type="text/css" href="files/css/styles-mobile.css"/>
+		<link rel="stylesheet" type="text/css" href="files/css/owl.carousel.css"/>
+		<link rel="stylesheet" type="text/css" href="files/css/owl.theme.css"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Fauna+One|Roboto+Slab">
 		<title>Michael Burnie</title>
 		<!--Google Analytics start; I am tracking YOU! HAHA!
@@ -34,6 +35,8 @@ That's okay please stay.</haiku>
 
 		</script>
 		<!--Google Analytics end-->
+
+  
 	</head>
 	<body>
 		<div data-role="page" id="home">
@@ -42,11 +45,15 @@ That's okay please stay.</haiku>
 				<h1>Michael Burnie</h1>
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home" data-icon="home" data-theme="b" class="ui-btn-active">Home</a></li>
+						<li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
 						<li><a href="#about" data-icon="info">About</a></li>
+						<li><a href="#contact" data-icon="mail">Contact</a></li>
+					</ul>
+					<ul>
 						<li><a href="#projects" data-icon="bars">Projects</a></li>
 						<li><a href="#services" data-icon="tag">Services</a></li>
-						<li><a href="#contact" data-icon="mail">Contact</a></li>
+						<li><a data-icon="arrow-l" data-rel="back">Back</a></li>
+						
 					</ul>
 				</div>
 			</div><!-- /header -->
@@ -57,10 +64,22 @@ That's okay please stay.</haiku>
 				
 				<img id="logo" src="files/images/mblogo.png" alt="Michael Burnie Logo" align="left" />
 				
+				<div id="owl-demo" class="owl-carousel owl-theme">
+
+					<div class="item"><a href="#projects"><img src="files/images/project/cms.png" alt="Content Management System"></a></div>
+					<div class="item"><a href="#projects"><img src="files/images/project/orbituary.png" alt="Orbituary"></a></div>
+					<div class="item"><a href="#projects"><img src="files/images/project/enterprise_computing.png" alt="Enterprise Computing"></a></div>
+					<div class="item"><a href="#projects"><img src="files/images/project/monumental_math.png" alt="Monumental Math"></a></div>
+					<div class="item"><a href="#projects"><img src="files/images/project/side_scroller.png" alt="Coin Collector"></a></div>
+					<div class="item"><a href="#projects"><img src="files/images/project/slot_machine.png" alt="Slot Machine"></a></div>
+
+				</div><!-- /owl demo -->
+				
 			</div><!-- /content -->
 	 
 			<div data-role="footer" data-theme="b">
 				<h4>&copy; 2014 Michael Burnie. All Rights Reserved.</h4>
+				<h4><a href="http://www.michaelburnie.com">Tap/click for Desktop</a></h4>
 			</div><!-- /footer -->
 	 
 		</div><!-- /page home -->
@@ -73,9 +92,11 @@ That's okay please stay.</haiku>
 					<ul>
 						<li><a href="#home" data-icon="home">Home</a></li>
 						<li><a href="#about" data-icon="info" class="ui-btn-active">About</a></li>
-						<li><a href="#projects" data-icon="bars">Projects</a></li>
-						<li><a href="#services" data-icon="tag">Services</a></li>
 						<li><a href="#contact" data-icon="mail">Contact</a></li>
+					</ul>
+					<ul>
+						<li><a href="#projects" data-icon="bars">Projects</a></li>
+						<li><a href="#services" data-icon="logo-icon">Services</a></li>
 					</ul>
 				</div>
 			</div><!-- /header -->
@@ -88,6 +109,10 @@ That's okay please stay.</haiku>
 				
 				<p>I'm Canadian. I'm in college for Computer Programming. I'm currently working for an eCommerce business.
 				Check out my <a href="http://ca.linkedin.com/pub/michael-burnie/52/a69/984" target="_blank">LinkedIn profile</a>.</p>
+				
+				<p><strong>I am a dedicated IT professional seeking additional knowledge and experience to achieve success in my field.</strong>
+				The IT field is always expanding, and I plan to take advantage of any opportunity I can get. IT is also becoming a part of just about every field out there, and it's bringing everyone
+				along by making technology accessible. I've always had a strong inclination towards technology and science, and IT is the culmination of those branches.</p>
 				
 				<div id="cv">
 					<h3>Curriculum Vitae</h3>
@@ -243,9 +268,7 @@ That's okay please stay.</haiku>
 			<div data-role="content">
 			
 				<h2>Services</h2>
-				<p>My name is Michael Burnie, and this is my website.<strong>I am a dedicated IT professional seeking additional knowledge and experience to achieve success in my field.</strong>
-				The IT field is always expanding, and I plan to take advantage of any opportunity I can get. IT is also becoming a part of just about every field out there, and it's bringing everyone
-				along by making technology accessible. I've always had a strong inclination towards technology and science, and IT is the culmination of those branches.</p>
+
 				<p>I am an IT professional. I am exploring opportunities to find the most suitable job in this field for me, so I am more than willing to take part in any IT job I can. 
 				I can provide consultation or programming services to the following:</p>
 				<h3>Programming</h3>
@@ -303,12 +326,15 @@ That's okay please stay.</haiku>
 	 
 			<div data-role="footer">
 				<h4>&copy; 2014 Michael Burnie. All Rights Reserved.</h4>
+				
 			</div><!-- /footer -->
 	 
 		</div><!-- /page contact -->
 		<!--My script imports. Stay away!-->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
-		<script type="text/javascript" src="files/js/jquery-main.js"></script>
+		<script type="text/javascript" src="files/js/mobile-jquery.js"></script>
+		<script type="text/javascript" src="files/js/owl.carousel.min.js"></script>
+
 	</body>
 </html>
