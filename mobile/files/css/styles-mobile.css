@@ -1,0 +1,45 @@
+/***
+File: styles-mobile.css
+Author: Michael Burnie
+Website: www.michaelburnie.com
+Description: These are the mobile CSS styles for my website.
+***/
+
+/* GENERAL */
+
+h1, h2, h3, h4, h5, h6, .ui-header li a
+{
+	font-family: 'Roboto Slab', Georgia, serif !important;
+}
+
+html p, .ui-content ul li
+{
+	font-family: 'Fauna One', Georgia, serif !important;
+}
+
+/* CONTENT */
+#projects img 
+{
+	clear: both;
+	width: 100%;
+}
+
+/* OTHER */
+
+#logo
+{
+	margin: 0 auto;
+	display: block;
+	width: 40%;
+}
+
+.ui-icon-michael {
+	background-image: url("../images/project/cms.png");
+}
+
+#owl-demo .item img
+{
+    display: block;
+    width: 100%;
+    height: auto;
+}

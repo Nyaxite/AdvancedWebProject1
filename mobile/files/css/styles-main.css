@@ -1,0 +1,260 @@
+/***
+File: styles-main.css
+Author: Michael Burnie
+Website: www.michaelburnie.com
+Description: These are the main CSS styles for my website.
+***/
+
+/* GENERAL */
+* 
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+html
+{
+	font-family: 'Roboto Slab', Georgia, serif;
+	background: #DDD url('../images/scribble_light.png') repeat center fixed;
+	color: #3B3B3B;
+}
+
+a
+{
+	text-decoration: none;
+	color: #06F;
+}
+
+img
+{
+	max-width: 100%;
+	border:1px solid #AAA;
+	border-radius: 5px;
+}
+
+li
+{
+	list-style-type: none;
+}
+
+/* HEADER, FOOTER */
+
+#header, #footer
+{
+	width: 100%;
+	background: #333 url('../images/irongrip.png') repeat center fixed;
+}
+
+#header
+{
+	position: fixed;
+	border-bottom: 1px solid #DDD;
+	height: 50px;
+}
+
+#footer
+{
+	color: #DDD;
+	padding: 10px 0;
+	border-top: 1px solid #DDD;
+	text-align: center;
+	font-size: 90%;
+}
+
+h1
+{
+	font-size: 42px;
+	color: white;
+	float: left;
+	padding-left: 1%;
+}
+
+h2
+{
+	text-align: center;
+}
+
+h2, h3
+{
+	padding: 10px 0px 10px 0px;
+	color: #333;
+}
+
+/* NAVIGATION */
+
+nav ul
+{
+	font-weight: bold;
+	list-style-type:none;
+	font-size: 120%;
+	float: right;
+	padding-top: 10px;
+	padding-right: 1%;
+}
+
+nav ul li
+{
+	display: inline;
+}
+
+nav a
+{
+	padding: 10px;
+	color: #AAA;
+}
+
+nav a:hover, nav .current a:hover
+{
+	text-decoration: underline;
+}
+
+nav .current a 
+{
+	color: #FFF;
+}
+
+/* CONTENT */
+
+#content strong{
+	color: #333;
+}
+
+#content
+{
+	max-width: 70%;
+	margin: 0px auto;
+	padding: 60px 20px 20px 20px;
+	min-height: 1000px;
+	background: #FFF url('../images/dust.png') repeat center fixed;
+	border-left: 1px solid #AAA;
+	border-right: 1px solid #AAA;
+}
+
+.subcontent
+{
+	border-bottom: 1px solid #AAA;
+}
+
+#content p, #content ul
+{
+	font: 100% 'Fauna One', Georgia, serif;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	line-height: 28px;
+}
+
+#content ul
+{
+	padding-left: 20px;
+	border-radius: 4px;
+}
+
+#content a:hover
+{
+	color: #F60;
+}
+
+#logo
+{
+	border: none;
+}
+
+#cv li
+{
+	list-style-type: square;
+}
+
+.project-section
+{
+	clear: both;
+}
+
+/* GAMES */
+
+#games
+{
+	text-align: center;
+}
+
+.game
+{
+	width: 45%;
+	display: inline-block;
+	padding: 2%;
+	vertical-align: top;
+}
+
+#math-question
+{
+	font-size: 3em;
+}
+
+#math-button-list
+{
+	display: inline;
+}
+
+#text-modifier ul
+{
+	text-align: left;
+}
+
+/* OTHER */
+
+.rslides
+{
+	margin: 0 auto !important;
+}
+
+.rslides .caption 
+{
+	display: block;
+	position: absolute;
+	z-index: 2;
+	text-shadow: none;
+	color: #fff;
+	background: rgba(0,0,0, .8);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 10px;
+	margin: 0;
+	max-width: none;
+	line-height: 20px !important;
+	text-align: center;
+	font-weight: bold !important;
+}
+
+/* Start button */
+button 
+{
+	padding: 2%;
+	background: #333;
+	color: #CCC;
+	border: 1px solid #AAA;
+	border-radius: 6px;
+	font-weight: bold;
+	font: 100% 'Fauna One', serif;
+}
+button:hover 
+{
+	color: #FFF;
+}
+
+button.btn-selected
+{
+	background: #CCC;
+	color: #333;
+	top:1px;
+}
+
+button:active
+{
+	background: #555;
+}
+/* End button */
+
+#btnProjects
+{
+	padding: 1% !important;
+}
