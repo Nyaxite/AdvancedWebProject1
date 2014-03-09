@@ -26,6 +26,13 @@ html p, .ui-content ul li
 
 /* OTHER */
 
+.profile-pic
+{
+	margin: 0 auto;
+	width: 60%;
+	display: block;
+}
+
 #logo
 {
 	margin: 0 auto;
